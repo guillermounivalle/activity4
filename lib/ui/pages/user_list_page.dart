@@ -30,6 +30,7 @@ class UserListPage extends StatelessWidget {
                 : Icons.portable_wifi_off_rounded),
             onPressed: () async {
               if (controller.connection) {
+                print("ME PRESIONARON COMO BOTóN");
                 await userController.addUser();
               } else {
                 Get.snackbar('Refresh failed!', "Can't get users",

@@ -1,6 +1,6 @@
 import 'package:http/http.dart' as http;
 import 'package:loggy/loggy.dart';
-
+import 'dart:developer';
 import '../../../domain/entities/random_user.dart';
 
 import '../../models/random_user_json_response_model.dart';
@@ -16,19 +16,25 @@ class UserRemoteDatatasource {
       "results": "1",
     }));
 
+
     //TODO
     // Usar el request URI para hace run Get, en caso de obtener un statusCode de 200
     // hacer parsing con el método RandomUserJsonReponseModel.fromJson y devolver
     // un RandomUser usando el método  RandomUserModel.fromRemote(..),toEntity()
 
     var response = await http.get(request);
+
     if (response.statusCode == 200) {
       logInfo("Got code 200");
-
       var jsonString = response.body;
+      //RandomUserJsonReponseModel.fromJson(jsonString as Map<String, dynamic>);
 
-      return RandomUser(
-          city: '', gender: 'xx', name: '', email: '', picture: '');
+    return RandomUser(
+          city: "Cali",
+          gender: 'Male',
+          name: 'cafwfqw',
+          email: 'fwqfqwf@dsbvds',
+          picture: 'fwqf');
     } else {
       logError("Got error code ${response.statusCode}");
     }
